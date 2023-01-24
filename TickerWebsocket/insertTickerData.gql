@@ -1,0 +1,34 @@
+mutation MasterMutation($listofticks: [master_data_insert_input!]!) {
+  insert_master_data(objects: $listofticks, on_conflict: {constraint: master_data_pkey, update_columns: [instrument_token, name, segment, instrument_type, expiry, strike]}) {
+    affected_rows
+  }
+}
+
+
+mutation IndicesMutation($listofindiceticks: [indices_ticks_insert_input!]!) {
+  insert_indices_ticks(objects: $listofindiceticks, on_conflict: {update_columns: [last_price], constraint: indice_ticks_pkey}) {
+    affected_rows
+  }
+}
+
+
+mutation FuturesMutation($listoffuturesticks: [futures_ticks_insert_input!]!) {
+  insert_futures_ticks(objects: $listoffuturesticks, on_conflict: {constraint: futures_ticks_pkey, update_columns: [last_price, volume_traded, open_interest]}) {
+    affected_rows
+  }
+}
+
+mutation StockMutation($listofstockticks: [stocks_ticks_insert_input!]!) {
+  insert_stocks_ticks(objects: $listofstockticks, on_conflict: {constraint: stock_ticks_pkey, update_columns: [last_price, open_interest, volume_traded]}) {
+    affected_rows
+  }
+}
+
+mutation optionsMutation($listofoptionsticks: [options_ticks_insert_input!]!) {
+  insert_options_ticks(objects: $listofoptionsticks, on_conflict: {constraint: options_ticks_pkey, update_columns: [last_price, volume_traded, open_interest,]}) {
+    affected_rows
+  }
+}
+
+
+
