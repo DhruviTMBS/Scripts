@@ -4,7 +4,7 @@ from insertTickerData import Operations
 from ticker import *
 import json
 
-url = "https://rough-shape-6577.fly.dev/v1/graphql"
+url = "https://squid-app-i98od.ondigitalocean.app/v1/graphql"
 headers = {"x-hasura-admin-secret": "verystrongsecret"}
 
 op_master = Operations.mutation.master_mutation

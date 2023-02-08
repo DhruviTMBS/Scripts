@@ -17,7 +17,7 @@ def mutation_master_mutation():
 
 def mutation_indices_mutation():
     _op = sgqlc.operation.Operation(_schema_root.mutation_type, name='IndicesMutation', variables=dict(listofindiceticks=sgqlc.types.Arg(sgqlc.types.non_null(sgqlc.types.list_of(sgqlc.types.non_null(_schema.indices_ticks_insert_input))))))
-    _op_insert_indices_ticks = _op.insert_indices_ticks(objects=sgqlc.types.Variable('listofindiceticks'), on_conflict={'update_columns': ('last_price',), 'constraint': 'indice_ticks_pkey'})
+    _op_insert_indices_ticks = _op.insert_indices_ticks(objects=sgqlc.types.Variable('listofindiceticks'), on_conflict={'update_columns': ('last_price',), 'constraint': 'indices_ticks_pkey'})
     _op_insert_indices_ticks.affected_rows()
     return _op
 
@@ -31,7 +31,7 @@ def mutation_futures_mutation():
 
 def mutation_stock_mutation():
     _op = sgqlc.operation.Operation(_schema_root.mutation_type, name='StockMutation', variables=dict(listofstockticks=sgqlc.types.Arg(sgqlc.types.non_null(sgqlc.types.list_of(sgqlc.types.non_null(_schema.stocks_ticks_insert_input))))))
-    _op_insert_stocks_ticks = _op.insert_stocks_ticks(objects=sgqlc.types.Variable('listofstockticks'), on_conflict={'constraint': 'stock_ticks_pkey', 'update_columns': ('last_price', 'open_interest', 'volume_traded')})
+    _op_insert_stocks_ticks = _op.insert_stocks_ticks(objects=sgqlc.types.Variable('listofstockticks'), on_conflict={'constraint': 'stocks_ticks_pkey', 'update_columns': ('last_price', 'open_interest', 'volume_traded')})
     _op_insert_stocks_ticks.affected_rows()
     return _op
 

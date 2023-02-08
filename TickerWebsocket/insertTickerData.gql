@@ -6,7 +6,7 @@ mutation MasterMutation($listofticks: [master_data_insert_input!]!) {
 
 
 mutation IndicesMutation($listofindiceticks: [indices_ticks_insert_input!]!) {
-  insert_indices_ticks(objects: $listofindiceticks, on_conflict: {update_columns: [last_price], constraint: indice_ticks_pkey}) {
+  insert_indices_ticks(objects: $listofindiceticks, on_conflict: {update_columns: [last_price], constraint: indices_ticks_pkey}) {
     affected_rows
   }
 }
@@ -19,7 +19,7 @@ mutation FuturesMutation($listoffuturesticks: [futures_ticks_insert_input!]!) {
 }
 
 mutation StockMutation($listofstockticks: [stocks_ticks_insert_input!]!) {
-  insert_stocks_ticks(objects: $listofstockticks, on_conflict: {constraint: stock_ticks_pkey, update_columns: [last_price, open_interest, volume_traded]}) {
+  insert_stocks_ticks(objects: $listofstockticks, on_conflict: {constraint: stocks_ticks_pkey, update_columns: [last_price, open_interest, volume_traded]}) {
     affected_rows
   }
 }
@@ -29,6 +29,3 @@ mutation optionsMutation($listofoptionsticks: [options_ticks_insert_input!]!) {
     affected_rows
   }
 }
-
-
-
